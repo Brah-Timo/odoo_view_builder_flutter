@@ -1,0 +1,128 @@
+# analysis_options.yaml — odoo_view_builder_flutter
+#
+# Linting rules for the project.
+# Extends the official flutter_lints recommended set and adds
+# project-specific rules for production-quality Dart code.
+#
+# Reference:
+#   https://dart.dev/tools/analysis
+#   https://dart.dev/tools/linter-rules
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  # Treat INFO-level diagnostics as errors in CI (flutter analyze --fatal-infos)
+  errors:
+    # Treat missing return types as errors
+    always_declare_return_types: error
+    # Treat unused imports as errors
+    unused_import: error
+    # Treat unused local variables as warnings
+    unused_local_variable: warning
+    # Dead code is a warning
+    dead_code: warning
+
+  exclude:
+    # Generated files
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.mocks.dart"
+    # Build output
+    - "build/**"
+    - ".dart_tool/**"
+
+  language:
+    # Strict null safety checking
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+linter:
+  rules:
+    # ── Style ──────────────────────────────────────────────────────────────
+    # Always use curly braces for control flow
+    curly_braces_in_flow_control_structures: true
+    # Prefer single quotes for string literals
+    prefer_single_quotes: true
+    # Add trailing commas to multiline parameter lists
+    require_trailing_commas: true
+    # Always use const when possible
+    prefer_const_constructors: true
+    prefer_const_constructors_in_immutables: true
+    prefer_const_declarations: true
+    prefer_const_literals_to_create_immutables: true
+    # Avoid unnecessary late keyword
+    unnecessary_late: true
+    # Use final for local variables when possible
+    prefer_final_locals: true
+    prefer_final_in_for_each: true
+    # Use super parameter syntax
+    use_super_parameters: true
+
+    # ── Naming ─────────────────────────────────────────────────────────────
+    # File names must be snake_case
+    file_names: true
+    # Non-constant identifier names must be camelCase
+    non_constant_identifier_names: true
+    # Class names must be UpperCamelCase
+    camel_case_types: true
+    # Extension names must be UpperCamelCase
+    camel_case_extensions: true
+    # Constant names must be lowerCamelCase
+    constant_identifier_names: true
+    # Library names must be lowercase_with_underscores
+    library_names: true
+
+    # ── Documentation ───────────────────────────────────────────────────────
+    # All public APIs should be documented
+    public_member_api_docs: false   # Recommend but not enforced (too noisy in UI code)
+    # Use /// for doc comments
+    slash_for_doc_comments: true
+
+    # ── Performance ─────────────────────────────────────────────────────────
+    # Avoid slow operations in build()
+    no_logic_in_create_state: true
+    # Prefer collection-if over conditional expression when building lists
+    prefer_collection_literals: true
+    # Use spread operator for combining collections
+    prefer_spread_collections: true
+    # Avoid creating closures in build()
+    avoid_unnecessary_containers: true
+
+    # ── Safety ─────────────────────────────────────────────────────────────
+    # Avoid returning null from non-nullable function types
+    avoid_returning_null_for_void: true
+    # Always initialise fields in constructors or declarations
+    always_require_non_null_named_parameters: true
+    # Avoid shadowing type parameters
+    no_duplicate_case_values: true
+    # Use is instead of runtimeType comparison
+    use_rethrow_when_possible: true
+    # Avoid catching errors (Error subclasses) — only catch Exception
+    avoid_catching_errors: true
+    # Throw Exceptions, not arbitrary objects
+    only_throw_errors: true
+
+    # ── Imports ─────────────────────────────────────────────────────────────
+    # Sort directives: dart: → package: → relative
+    directives_ordering: true
+    # Avoid absolute imports for files in lib/
+    prefer_relative_imports: true
+
+    # ── Flutter-specific ────────────────────────────────────────────────────
+    # Use SizedBox.shrink() instead of Container()
+    sized_box_shrink_expand: true
+    # Use SizedBox for whitespace
+    use_decorated_box: true
+    # Avoid using deprecated members
+    deprecated_member_use_from_same_package: true
+    # Widget keys
+    use_key_in_widget_constructors: true
+
+    # ── Explicit disables ───────────────────────────────────────────────────
+    # Allow long lines in generated code and comments
+    lines_longer_than_80_chars: false
+    # Allow dynamic in JSON map handling
+    avoid_dynamic_calls: false
+    # Allow test helper functions to not follow naming rules
+    avoid_function_literals_in_foreach_calls: false
